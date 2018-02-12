@@ -1,0 +1,25 @@
+// ejercicio 1 
+var
+arregloName = ["Oscar", "pepe", "mario"],
+arregloNum = [1254, 25639, 589422],
+arregloBoole = [true, false, true],
+
+arregloAnidado = [];
+
+for ( var i = 0; i < arregloName.length; i++){
+	arregloAnidado[i] = [arregloName[i], arregloNum[i], arregloBoole[i]];
+}
+
+console.log(arregloAnidado);
+
+
+// ejercicio 2
+
+var arregloRandom = [];
+
+for (var i=0; i < 100; i++) {
+  var random = Math.floor(Math.random() * 100);
+  arregloRandom.push(random);
+}
+
+console.log(arregloRandom);

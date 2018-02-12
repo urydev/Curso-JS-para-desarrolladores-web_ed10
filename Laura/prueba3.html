@@ -1,0 +1,39 @@
+<html>
+
+
+	<body>
+
+		<div id="resultado"></div>
+
+		<button id="cambiar">Cambiar</button>
+
+
+		<script>
+			// Escribir en el div #resultado
+			var resultado = document.getElementById("resultado");
+			resultado.innerHTML = "Hola";	
+
+			// Escuchar el evento click del botón
+			var botonCambiar = document.getElementById('cambiar')
+			botonCambiar.addEventListener("click", cambiaDatos);
+
+			// Cambia el div #resultado
+			async function cambiaDatos() {
+				var apiResult = await api('https://api.punkapi.com/v2/');
+				var quote = apiResult.value;
+				resultado.innerHTML = quote;
+			}
+
+			// Llamadas a la api
+			async function api(url) {			  
+			  var firstData = await fetch(url);
+			  // only proceed once promise is resolved
+			  var data = await firstData.json();
+			  // only proceed once second promise is resolved
+			  return data;
+			}
+		</script>
+
+	</body>
+
+</html>

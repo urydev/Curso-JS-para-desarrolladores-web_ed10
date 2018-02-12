@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pruebecitas</title>
+</head>
+<body>
+<div id="resultado"></div>
+<button id="cambiar">CAMBIAR</button>
+
+
+
+<script type="text/javascript">
+	//quiero que al abrir la página en el texto ponga uno
+	var resultado = document.getElementById("resultado");
+	resultado.innerHTML = "hola";
+
+	async function pilladatos () {
+		  var url = 'https://randomuser.me/api';
+		  // en nuestra primera data vamos a esperar a que se ejecute que vayas al sñor de los nombres, le pides el usuario, esperas, y vuelves y lo metes en nuestro firstdata. aunque esto puede venir de muchos tipos, y le idce que quieo que venga de forma amigable, entonces esperamos a que  cuadno firsDAta se convierta en un json. = formato moderno de intercambio de información. la parte guay es que es un objeto de js. 
+
+		  var firstData = await fetch(url);
+		   
+
+		  // only proceed once promise is resolved. ahora data es un objeto de js, cuando tienes los datos en el json los devuelves 
+
+		  
+		  var data = await respofirstData.json();
+		  
+		  // only proceed once second promise is resolved
+		  
+		  return data;
+		}
+
+	
+	// escribe adiós en #resultado
+	function escribeAdios(e) {
+		
+		// llamada a randomuser y cuando imprimaesto a consola imprimirá el cambio a adiós porque es asíncrono
+		var randomuser = await pilladatos();
+		var email = randomuser-results[0].email;
+		console.log(randomuser);
+
+
+		resultado.innerHTML = "adios";
+	};
+	
+	//escuchar el eveto click 
+	var botonCambiar = document.getElementById("cambiar")
+	botonCambiar.addEventListener("click", escribeAdios);
+
+
+
+
+
+	
+
+	</script>
+</body>
+</html>
