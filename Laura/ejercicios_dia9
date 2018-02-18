@@ -23,3 +23,111 @@ for (var i=0; i < 100; i++) {
 }
 
 console.log(arregloRandom);
+
+// ejercicio 3 
+
+var lista = [];
+
+function aLaLista() {
+  
+	var name = prompt("dime tu nombre");
+	var asistencia = confirm("vas al evento?");
+      
+	if (asistencia === true){
+		lista.push(name);
+    console.log("la lista es la siguiente: "+ lista +". Tu nombre es", name, "que está en la posición", lista.indexOf(name));
+		
+    console.log(lista);
+  }   
+}
+
+function fuera (){
+  var name = confirm("que usuario quieres eliminar");
+  
+  var buscarNombre = lista.indexOf(name)
+  lista[buscarNombre] = null;  
+   if (fuera === true){
+    	lista.splice(name);    
+   }
+}
+fuera ();
+aLaLista();
+
+// ejercicio máquina 
+
+//clientes
+
+var usuario = [];
+function newUser () {
+
+	var usuarioNuevo = {   
+	    nombre: prompt("dime tu nombre"),
+	    apellido: prompt("dime tu apellido"),
+	    alias: prompt("dime tu alias"),
+	    pass: prompt("dime tu contraseña"),
+	    tipo: prompt("dime tu user"),
+	    presu: Number(prompt("dime tu presu")), 
+	};
+ 
+  	function gestionUsuarios() {
+		if (usuarioNuevo.nombre || usuarioNuevo.apellido || usuarioNuevo.alias || usuarioNuevo.pass || usuarioNuevo.tipo || usuarioNuevo.presu !== undefined){
+      usuario.push(usuarioNuevo);	
+      console.log(usuario);
+		}  else {
+			alert("usuario mal cumplimentado o registrado previamente");
+		}
+	}
+    function gestionSaldo() {
+      if (usuarioNuevo.presu > 0 ){
+          console.log("su saldo es", usuarioNuevo.presu);
+          return usuarioNuevo.pass && usuarioNuevo.user;
+      } else {
+        alert ("no tiene dinero!");
+      }	
+    }
+ 
+  
+	gestionUsuarios();
+
+	gestionSaldo();
+}
+
+newUser();
+
+// lista productos
+
+var productos = [];
+
+function productoNuevo(a, b, c, d, f) {
+	a = {
+	    name : 'plátano',
+	    precio: '2puntos',
+	};
+
+	b = {
+    	name : 'patatas',
+		precio: '1punto',
+	};
+  
+    c = {
+    	name : 'Coca Cola',
+		precio: '5puntos',
+	};
+
+	d = {
+    	name : 'Coca Cola',
+		precio: '5puntos',
+	};
+
+	f = {
+    	name : 'Coca Cola',
+		precio: '5puntos',
+	};
+
+	productos.push(a, b, c);
+	console.log(productos);
+}
+
+productoNuevo('plátano', 'patatas', 'Coca Cola', 'limón', 'naranja');
+		
+
