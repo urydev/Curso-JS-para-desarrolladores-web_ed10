@@ -58,25 +58,35 @@ aLaLista();
 //clientes
 
 var usuario = [];
-function newUser () {
 
-	var usuarioNuevo = {   
-	    nombre: prompt("dime tu nombre"),
-	    apellido: prompt("dime tu apellido"),
-	    alias: prompt("dime tu alias"),
-	    pass: prompt("dime tu contraseña"),
-	    tipo: prompt("dime tu user"),
-	    presu: Number(prompt("dime tu presu")), 
-	};
  
   	function gestionUsuarios() {
-		if (usuarioNuevo.nombre || usuarioNuevo.apellido || usuarioNuevo.alias || usuarioNuevo.pass || usuarioNuevo.tipo || usuarioNuevo.presu !== undefined){
-      usuario.push(usuarioNuevo);	
-      console.log(usuario);
-		}  else {
-			alert("usuario mal cumplimentado o registrado previamente");
-		}
+      
+      var usuarioNuevo = {   
+        nombre: prompt("dime tu nombre"),
+        apellido: prompt("dime tu apellido"),
+        alias: prompt("dime tu alias"),
+        pass: prompt("dime tu contraseña"),
+        tipo: prompt("dime tu user"),
+        presu: Number(prompt("dime tu presu")), 
+			};
+      
+      if (usuarioNuevo.nombre === '' || usuarioNuevo.apellido === '' 
+          || usuarioNuevo.alias  === '' 
+          || usuarioNuevo.pass  === '' 
+          || usuarioNuevo.tipo  === '' 
+          || usuarioNuevo.presu  === ''){
+        	alert("usuario mal cumplimentado");     
+       } else {
+          if (usuarioExistente(usuarioNuevo.alias) === false){
+          		usuario.push(usuarioNuevo);	
+          		console.log(usuario);
+          } else {
+            	alert("usuario registrado previamente");
+          }
+      }     
 	}
+  
     function gestionSaldo() {
       if (usuarioNuevo.presu > 0 ){
           console.log("su saldo es", usuarioNuevo.presu);
@@ -85,14 +95,24 @@ function newUser () {
         alert ("no tiene dinero!");
       }	
     }
+  
+  function usuarioExistente (alias){
+    for (var i = 0; i < usuario.length ; i++){
+    	var user = usuario[i];
+      if (user.alias === alias) {
+        console.log("usuario registrado");
+        return true;
+      }
+    }
+    
+   return false;
+    
+  }
  
   
-	gestionUsuarios();
+gestionUsuarios();
+gestionSaldo();
 
-	gestionSaldo();
-}
-
-newUser();
 
 // lista productos
 
