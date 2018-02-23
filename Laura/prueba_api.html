@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    
+    <script>
+
+var request = new XMLHttpRequest();
+
+request.open('GET', 'http://airemad.com/api/v1/pollen');
+
+request.onreadystatechange = function () {
+  if (this.readyState === 4) {
+    var estacion = JSON.parse(this.responseText)[0];
+    var h1 = document.getElementById("nombre");
+    h1.innerHTML = estacion.name;
+      
+    console.log('Body:', estacion);
+  }
+};
+
+
+request.send();
+        
+		</script>
+    </head>
+
+		
+
+		
+
+	<body>
+        <h1 id="nombre"></h1>
+        
+        <p></p>
+    </body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comics</title>
+
+</head>
+<body>
+
+<h1 id="personaje"></h1>
+<p></p>
+</body> 
+
+
+<script>
+
+	function comicsapi (comic) {
+        var xmlHttp = new XMLHttpRequest(),
+        APIKey = '661426f097b127e3060aec3c411e1d7ecc02784c', 
+        cURL = 'https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/series?api_key=' +APIKey;
+    	
+
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) { 
+            var datos = (JSON.parse(xmlHttp.responseText));
+    		var contenido = document.getElementbyId("personaje");        
+	            contenido.innerHTML = datos; 	            
+
+            } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+                datos = JSON.parse(xmlHttp.responseText);
+                console.error("ERROR! 404");
+                console.info(datos);
+            }
+        };
+    
+        xmlHttp.open( "GET",  cURL, true);
+        xmlHttp.send();
+    }
+    
+    comicsapi("hey");
+
+</script>
+
+
+
+
+</html>

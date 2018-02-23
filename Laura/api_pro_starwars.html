@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comics</title>
+
+</head>
+<body>
+
+<h1 id="personaje"></h1>
+
+<!-- idea: construir una historia aleatoria de pelicula mas perosaje mas planetas mas especies mas..) -->
+<p></p>
+</body> 
+
+
+<script>
+
+	function comicsapi (comic) {
+        var xmlHttp = new XMLHttpRequest(),
+        cURL = 'https://swapi.co/api/films/1/';
+    	
+
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) { 
+            var datos = (JSON.parse(xmlHttp.responseText));
+
+    		var contenido = document.getElementById("personaje");        
+				contenido.innerHTML = datos.title;
+            } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+                datos = JSON.parse(xmlHttp.responseText);
+                console.error("ERROR! 404");
+                console.info(datos);
+            }
+        };
+    
+        xmlHttp.open( "GET",  cURL, true);
+        xmlHttp.send();
+    }
+    
+    comicsapi("hey");
+
+</script>
+
+
+
+
+</html>
