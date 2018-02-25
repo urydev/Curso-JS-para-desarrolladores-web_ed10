@@ -53,72 +53,183 @@ function fuera (){
 fuera ();
 aLaLista();
 
-// ejercicio máquina 
 
-//clientes
+// ejercicio máquina paso 3
+
+
 
 var usuario = [];
-
  
   	function gestionUsuarios() {
       
-      var usuarioNuevo = {   
-        nombre: prompt("dime tu nombre"),
-        apellido: prompt("dime tu apellido"),
-        alias: prompt("dime tu alias"),
-        pass: prompt("dime tu contraseña"),
-        tipo: prompt("dime tu user"),
-        presu: Number(prompt("dime tu presu")), 
-			};
+        var usuarioNuevo = {   
+	        nombre: prompt("dime tu nombre"),
+	        user: prompt("dime tu user"),
+	        pass: prompt("dime tu contraseña"),
+	        tipo: prompt("dime tu tipo de user"),
+	        presu: Number(prompt("dime tu presu")), 
+		};
       
-      if (usuarioNuevo.nombre === '' || usuarioNuevo.apellido === '' 
-          || usuarioNuevo.alias  === '' 
-          || usuarioNuevo.pass  === '' 
-          || usuarioNuevo.tipo  === '' 
-          || usuarioNuevo.presu  === ''){
-        	alert("usuario mal cumplimentado");     
-       } else {
-          if (usuarioExistente(usuarioNuevo.alias) === false){
-          		usuario.push(usuarioNuevo);	
-          		console.log(usuario);
-          } else {
-            	alert("usuario registrado previamente");
-          }
-      }     
+	    function gestionSaldo(presu) {
+	        if (usuarioNuevo.presu > 0 ){
+	            console.log("su saldo es", usuarioNuevo.presu);
+	            return usuarioNuevo.pass && usuarioNuevo.user;
+
+	        } else {
+	            alert ("no tiene dinero!");
+	        } 
+        }
+
+        function gastos(presu) {
+			var precioProducto = 12;
+			// por cada compra 
+			var = saldoDisponible = x - precioProducto;
+			return saldoDisponible;
+        } 
+
+        gastos(); 
+      	gestionSaldo();
 	}
+
+gestionUsuarios();
+
+
+
+
+
+
+// ejercicio máquina 
+
+
+var usuario = [];
+ 
+	function gestionUsuarios() {
   
-    function gestionSaldo() {
-      if (usuarioNuevo.presu > 0 ){
-          console.log("su saldo es", usuarioNuevo.presu);
-          return usuarioNuevo.pass && usuarioNuevo.user;
-      } else {
-        alert ("no tiene dinero!");
-      }	
-    }
+     var usuarioNuevo = {   
+        nombre: prompt("dime tu nombre"),
+        user: prompt("dime tu user"),
+        pass: prompt("dime tu contraseña"),
+        tipo: prompt("dime tu tipo de user"),
+        presu: Number(prompt("dime tu presu")), 
+	};
   
-  function usuarioExistente (alias){
+    if (usuarioNuevo.nombre === '' 
+      || usuarioNuevo.user  === '' 
+      || usuarioNuevo.pass  === '' 
+      || usuarioNuevo.tipo  === '' 
+      || usuarioNuevo.presu  === ''){
+    	alert("usuario mal cumplimentado");     
+    } else {
+    	if(usuarioNuevo.pass !== "ficticiaMola"){
+    		console.log ("contraseña no segura");
+    	} else {
+    		if (usuarioExistente(usuarioNuevo.user) === false){
+      			usuario.push(usuarioNuevo);	
+      			console.log(usuario);
+    		} else {
+        		alert("usuario registrado previamente");
+    		}
+    	}
+	}     
+}
+
+function usuarioExistente (user){
     for (var i = 0; i < usuario.length ; i++){
-    	var user = usuario[i];
-      if (user.alias === alias) {
+    	var tipoUser = usuario[i];
+      if (tipoUser.user === user) {
         console.log("usuario registrado");
         return true;
       }
     }
-    
-   return false;
-    
-  }
- 
+	return false;    
+}
   
+   
 gestionUsuarios();
-gestionSaldo();
+usuarioExistente ();  
 
 
-// lista productos
 
-var productos = [];
+//lista de productos 
 
-function productoNuevo(a, b, c, d, f) {
+var productosMaquina = ['plátano', 'patatas'],
+	precioProductosMaquina = [5, 2];
+
+var maquinaArray = [];
+
+for (var i = 0 ; i < productosMaquina.length ; i++){
+	var resumen = [productosMaquina[i], precioProductosMaquina[i]];
+		maquinaArray.push(resumen);
+}
+
+console.log (maquinaArray);
+
+// consumir un producto
+
+function consumoProducto (productoDeseado) {
+	var totalVeces = 0;
+	
+	for (var i = 0; i <= productosMaquina.length; i++) {
+		if (productosMaquina[i] === productoDeseado){
+			totalVeces++;
+		}
+	}
+	
+	console.log("tenemos", totalVeces, productoDeseado);
+	var aceptoProducto = confirm('la quieres?');
+
+	if (aceptoProducto === true){
+		if(usuarioNuevo.pass !== "ficticiaMola" && usuarioExistente(usuarioNuevo.user) === false){
+        		console.log ("contraseña o usuario incorrecto");
+        	} else {
+        		maquinaArray.pop();
+				console.log ('ahora la máquina solo tiene:', 
+							   maquinaArray);
+        	}		
+		}
+	}
+
+consumoProducto (prompt("qué producto quieres"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var productosMaquina = [];
+
+function nuevosProductos(a, b, c, d, f) {
 	a = {
 	    name : 'plátano',
 	    precio: '2puntos',
@@ -144,10 +255,41 @@ function productoNuevo(a, b, c, d, f) {
 		precio: '5puntos',
 	};
 
-	productos.push(a, b, c);
-	console.log(productos);
+	productosMaquina.push(a, b, c, d, f);
+	console.log(productosMaquina);
 }
 
-productoNuevo('plátano', 'patatas', 'Coca Cola', 'limón', 'naranja');
-		
+nuevosProductos('plátano', 'patatas', 'Coca Cola', 'limón', 'naranja');
 
+
+
+
+
+var productosMaquina = [];
+
+function nuevosProductos() {
+	var newProduct = {
+	    name: prompt("nombre del producto"),
+	    precio:  Number(prompt("precio del producto")),
+	};
+
+    if(productoExistente (newProduct.name) === false){
+  		productosMaquina.push(newProduct);
+  		console.log(productosMaquina);
+    } else {
+     	alert("producto existent");
+    }
+}
+
+function productoExistente (name){
+    for (var i = 0; i < productosMaquina.length ; i++){
+    	var productoEncontrado = productosMaquina[i];
+	    if (productoEncontrado.name === name) {
+	        console.log("no existe ese producto");
+	        return true;
+	    }
+    }
+	return false;    
+}
+
+nuevosProductos();
