@@ -6,7 +6,8 @@
 </head>
 <body>
 
-<h1 id="personaje"></h1>
+<h1 id="titulo"></h1>
+<h2 id="personaje"></h2>
 
 <!-- idea: construir una historia aleatoria de pelicula mas perosaje mas planetas mas especies mas..) -->
 <p></p>
@@ -24,8 +25,10 @@
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) { 
             var datos = (JSON.parse(xmlHttp.responseText));
 
-    		var contenido = document.getElementById("personaje");        
-				contenido.innerHTML = datos.title;
+    		var contenido = document.getElementById("titulo");     
+    		var contenido = document.getElementById("personaje");   
+
+			contenido.innerHTML = datos.title;
             } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
                 datos = JSON.parse(xmlHttp.responseText);
                 console.error("ERROR! 404");

@@ -100,10 +100,12 @@ gestionUsuarios();
 
 // ejercicio máquina 
 
+// ejercicio máquina
+
 
 var usuario = [];
  
-	function gestionUsuarios() {
+function gestionUsuarios() {
   
      var usuarioNuevo = {   
         nombre: prompt("dime tu nombre"),
@@ -111,7 +113,7 @@ var usuario = [];
         pass: prompt("dime tu contraseña"),
         tipo: prompt("dime tu tipo de user"),
         presu: Number(prompt("dime tu presu")), 
-	};
+		};
   
     if (usuarioNuevo.nombre === '' 
       || usuarioNuevo.user  === '' 
@@ -129,7 +131,7 @@ var usuario = [];
     		} else {
         		alert("usuario registrado previamente");
     		}
-    	}
+    }
 	}     
 }
 
@@ -150,7 +152,7 @@ usuarioExistente ();
 
 
 
-//lista de productos 
+//lista de productos
 
 var productosMaquina = ['plátano', 'patatas'],
 	precioProductosMaquina = [5, 2];
@@ -166,7 +168,7 @@ console.log (maquinaArray);
 
 // consumir un producto
 
-function consumoProducto (productoDeseado) {
+function consumoProducto (productoDeseado){
 	var totalVeces = 0;
 	
 	for (var i = 0; i <= productosMaquina.length; i++) {
@@ -179,15 +181,22 @@ function consumoProducto (productoDeseado) {
 	var aceptoProducto = confirm('la quieres?');
 
 	if (aceptoProducto === true){
-		if(usuarioNuevo.pass !== "ficticiaMola" && usuarioExistente(usuarioNuevo.user) === false){
+		
+		/*
+			* tengo un usuario x, en este caso 0 oirque teng una lista con un solo usuario, como no es un bucle no ponemos [i]
+			* como la funcion no la tenemso en el scope no la va a coger, llo que sí tenemso a nuestra altura es el array Usuario
+			* la función no la va a leer así que no hace falta introducirla
+		*/
+			
+		if(usuario[0].pass !== "ficticiaMola" && usuario[0].user === false){
         		console.log ("contraseña o usuario incorrecto");
         	} else {
         		maquinaArray.pop();
 				console.log ('ahora la máquina solo tiene:', 
 							   maquinaArray);
-        	}		
+		   	}		
 		}
-	}
+}
 
 consumoProducto (prompt("qué producto quieres"));
 
@@ -225,7 +234,7 @@ consumoProducto (prompt("qué producto quieres"));
 
 
 
-
+// THIS WORKS TOO! YEYY
 
 var productosMaquina = [];
 
@@ -285,7 +294,7 @@ function productoExistente (name){
     for (var i = 0; i < productosMaquina.length ; i++){
     	var productoEncontrado = productosMaquina[i];
 	    if (productoEncontrado.name === name) {
-	        console.log("no existe ese producto");
+	        console.log("sí!!!");
 	        return true;
 	    }
     }
